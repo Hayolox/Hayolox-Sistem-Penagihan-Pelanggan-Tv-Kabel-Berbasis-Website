@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
+use App\Models\Month;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
@@ -25,7 +27,9 @@ class BillController extends Controller
      */
     public function create()
     {
-        return view('pages.Admin.Tagihan.tagihan');
+        $months =  Month::get();
+        $years = Year::get();
+        return view('pages.Admin.Tagihan.tagihan', compact('month,years'));
     }
 
     
