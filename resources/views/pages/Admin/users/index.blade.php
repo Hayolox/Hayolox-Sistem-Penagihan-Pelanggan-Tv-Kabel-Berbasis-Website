@@ -57,7 +57,7 @@
                 <td>Rp 36.000</td>
                 <td>Jl Beringin No 51</td>
                 <td>
-                  <a href="" class="btn btn-info">Detail</a>
+                  <a href="" class="btn btn-info">Edit</a>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                     Hapus
