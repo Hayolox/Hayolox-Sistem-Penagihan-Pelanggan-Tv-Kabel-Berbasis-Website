@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
 use App\Models\Month;
+use App\Models\User;
 use App\Models\Year;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('pages.Admin.Tagihan.index');
+       $bills =  Bill::get();
+        return view('pages.Admin.Tagihan.index', compact('bills'));
     }
 
     /**
@@ -29,7 +31,7 @@ class BillController extends Controller
     {
         $months =  Month::get();
         $years = Year::get();
-        return view('pages.Admin.Tagihan.tagihan', compact('month,years'));
+        return view('pages.Admin.Tagihan.tagihan', compact('months','years'));
     }
 
     
@@ -42,7 +44,25 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = User::where('roles', 'USERS')->get();
+        
+ 
+        foreach ( $users as $user)
+        {
+            Bill::create([
+                'user_id' => $user->id,
+                'month_id' => $request->bulan,
+                'year_id' => $request->tahun,
+            ]);
+        }
+ 
+            
+
+          
+       
+       
+
+       
     }
 
     /**

@@ -108,22 +108,21 @@
                 <th scope="col">Tagihan</th>
                 <th scope="col">Alamat </th>
                 <th scope="col">Tahun </th>
-                <th scope="col">Status </th>
-                <th scope="col">Action </th>
+                <th scope="col">Wa </th>
               </tr>
             </thead>
             <tbody>
+              @foreach ($bills as $bill)
               <tr>
-                <th scope="row">108</th>
-                <td>Hizbullah Haidar Anis Al Wakil</td>
-                <td>081253053581</td>
-                <td>Rp 36.000</td>
-                <td>Jl Beringin No 51</td>
-                <td>2021-Januari</td>
-                <td>Nunggak</td>
-                <td>
-
-                </td>
+                <th scope="row">{{ $bill->user->Nomor_pelanggan }}</th>
+                <td>{{ $bill->user->name }}</td>
+                <td>{{ $bill->user->no_hp }}</td>
+                <td>{{ $bill->user->tagihan }}</td>
+                <td>{{ $bill->user->alamat }}</td>
+                <td>{{ $bill->month->bulan}} | {{ $bill->year->tahun }}</td>
+                <td>Rencana Wa</td>   
+                @endforeach
+                
               </tr>
             </tbody>
           </table>     
