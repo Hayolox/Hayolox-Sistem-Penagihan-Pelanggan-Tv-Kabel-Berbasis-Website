@@ -25,6 +25,9 @@ Route::prefix('Admin')->group(function(){
 
         Route::get('/Tagihan/delete/tahun', [TahunController::class, 'index'])->name('delete-tahun');
         Route::get('/Tagihan/create/tahun', [TahunController::class, 'create'])->name('create-tahun');
+        Route::post('/Tagihan/store/tahun/', [TahunController::class, 'store'])->name('store-tahun');
+        Route::post('/Tagihan/edit/tahun/{id}', [TahunController::class, 'edit'])->name('edit-tahun');
+        Route::get('/Tagihan/delete/tahun/{id}', [TahunController::class, 'destroy'])->name('destroy-tahun');
         Route::resource('Tagihan', BillController::class);
 
         Route::get('/Verifikasi-Tagihan', [VerifikasiController::class, 'index'])->name('verifikasi');

@@ -44,25 +44,138 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $users = User::where('roles', 'USERS')->get();
+        $users = User::where('roles', 'USERS')->get(); 
+        if($request->month_id == 1)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan January sudah buat',
+            ]
         
- 
+            );
+        }elseif($request->month_id == 2)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan February sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 3)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Maret sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 4)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan April sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 5)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Mei sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 6)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Juni sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 7)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan July sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 8)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Agustus sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 9)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan September sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 10)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Oktober sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 11)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan November sudah buat',
+            ]
+        
+            );
+        }elseif($request->month_id == 12)
+        {
+            $request->validate([
+                'month_id' => 'unique:bills,month_id',
+            ],
+            [
+                'month_id.unique' => 'Tagihan bulan Desember sudah buat',
+            ]
+        
+            );
+        }
+        
         foreach ( $users as $user)
         {
-            Bill::create([
+          Bill::create([
                 'user_id' => $user->id,
-                'month_id' => $request->bulan,
-                'year_id' => $request->tahun,
+                'month_id' => $request->month_id,
+                'year_id' => $request->year_id,
             ]);
         }
- 
-            
-
-          
-       
-       
-
-       
+        return redirect()->route('Tagihan.index');
     }
 
     /**

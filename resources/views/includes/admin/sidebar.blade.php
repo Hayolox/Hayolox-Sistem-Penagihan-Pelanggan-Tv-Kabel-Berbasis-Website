@@ -21,7 +21,7 @@
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('Admin/Tahun*')) ? 'active' : '' }} {{ (request()->is('Admin/Tagihan*')) ? 'active' : '' }}" href="{{ route('Tagihan.index') }}">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Data User</span>
+                <span class="nav-link-text">Data Tagihan</span>
               </a>
             </li>
 

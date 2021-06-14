@@ -17,43 +17,9 @@
           </nav>
         </div>
         <div class="col-lg-6 col-5 d-flex justify-content-center">
-          <button type="button"class="btn btn-sm btn-neutral text-center">
-            <a href="{{ route('Tagihan.create') }}">Buat Tagihan</a>
-          </button>
-         
-           <!-- Button trigger modal -->
-           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-            Hapus Tagihan
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Yakin Untuk Menghapus Semua Tagihan?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-          
-                <div class="modal-footer d-flex justify-content-center">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <form action="" class="form-inline">
-                    @csrf
-                    @method('delete')
-                    <button class="btn btn-danger">Yakin</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button type="button"class="btn btn-sm btn-neutral text-center">
-            <a href="{{ route('create-tahun') }}">Buat Tahun Tagihan</a>
-          </button>
-          <button  type="button"class="btn btn-sm btn-danger text-center">
-            <a href="{{ route('delete-tahun') }}" class="text-white">Hapus Tahun Tagihan</a>
-          </button>
+          <a href="{{ route('Tagihan.create') }}" class="btn btn-sm btn-info text-center" >Buat Tagihan</a>
+          <a href="{{ route('create-tahun') }}" class="btn btn-sm btn-info text-center">Buat Tahun Tagihan</a>
+          <a href="{{ route('delete-tahun') }}" class="btn btn-sm btn-danger text-center">Hapus Tahun Tagihan</a>
           
         </div>
       </div>
