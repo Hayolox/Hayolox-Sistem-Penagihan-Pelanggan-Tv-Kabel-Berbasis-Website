@@ -38,30 +38,20 @@
               <h3 class="mb-0">Data Tagihan</h3>
             </div>
 
-            <form class="form-inline mb-4" action="">
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Tahun</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>2021</option>
-                  <option>2022</option>
-                  <option>2023</option>
-                </select>
-              </div>
-
-              <div class="form-group ml-5">
+            <form class="form-inline mb-4" action="{{ route('Tagihan.index') }}" method="GET">
+              @csrf
+              <div class="form-group ml-5 mr-3">
                 <label for="exampleFormControlSelect1">Bulan</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>Januari</option>
-                  <option>februari</option>
-                  <option>Mei</option>
+                <select name="month" class="form-control" id="exampleFormControlSelect1">
+                  <option  selected>Choose Month</option>
+                  @foreach ($months as $month)
+                  <option value="{{ $month->id }}">{{ $month->bulan }}</option>
+                  @endforeach
                 </select>
               </div>
 
-              <div class="form-group ml-5">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              </div>
-              
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search/Filter</button>
+           
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter</button>
             </form>
         <!-- Light table -->
         <div class="table-responsive">
@@ -87,9 +77,9 @@
                 <td>{{ $bill->user->alamat }}</td>
                 <td>{{ $bill->month->bulan}} | {{ $bill->year->tahun }}</td>
                 <td>Rencana Wa</td>   
-                @endforeach
-                
+                @endforeach  
               </tr>
+              {{ $bills->links() }}
             </tbody>
           </table>     
         </div>

@@ -23,8 +23,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'Nomor_pelanggan' => $this->faker->unique()->ean8(),        
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'no_hp' => $this->faker->unique()->ean8(),
+            'alamat' => $this->faker->unique()->streetAddress(), 
+            'tagihan' => $this->faker->unique()->ean8(), 
+            'roles' => $this->faker->title("USERS"), 
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

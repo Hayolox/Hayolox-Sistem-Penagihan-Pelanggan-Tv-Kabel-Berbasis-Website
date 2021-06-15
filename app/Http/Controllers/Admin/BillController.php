@@ -8,6 +8,7 @@ use App\Models\Month;
 use App\Models\User;
 use App\Models\Year;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class BillController extends Controller
 {
@@ -16,10 +17,19 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $bills =  Bill::get();
-        return view('pages.Admin.Tagihan.index', compact('bills'));
+      
+        $years = Year::get();
+        $months = Month::get();
+        $get = $request->month;
+        if($request->month)
+        {
+            $bills =  Bill::with(['user'])->where('month_id', $request->month)->paginate(20); 
+        }else{
+            $bills =  Bill::with(['user'])->paginate(20);
+        }
+       return view('pages.Admin.Tagihan.index', compact('bills','years','months'));
     }
 
     /**
@@ -43,7 +53,12 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+        {$request->validate([
+            'month_id' => 'required|unique:bills,month_id',
+        ],[
+            'month_id.required' => 'bulan  tidak boleh kosong',
+            'month_id.unique' => 'tagihan bulan ini sudah  sudah di buat',
+        ]);
         $users = User::where('roles', 'USERS')->get(); 
         if($request->month_id == 1)
         {
