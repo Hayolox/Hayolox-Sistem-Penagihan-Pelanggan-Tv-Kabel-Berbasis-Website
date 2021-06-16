@@ -202,7 +202,6 @@ class BillController extends Controller
     public function show(Bill $bill)
     {
         //
-        $tes = User::get();
     }
 
     /**
