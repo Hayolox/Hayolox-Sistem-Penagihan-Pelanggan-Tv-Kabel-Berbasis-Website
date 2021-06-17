@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.Admin.users.index');
+        $users = User::paginate(20);
+        return view('pages.Admin.users.index',compact('users'));
     }
 
     /**
@@ -36,7 +38,52 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'no_hp' => 'required',
+            
+        ],[
+            'name.required' => 'Nama tidak boleh kosong',
+            'email.required' => 'Email tidak boleh kosong',
+            'no_hp.required' => 'No Handphone tidak boleh kosong',
+            'email.unique' => 'Email ini sudah tersedia',
+        ]
+        );
+            $code = Carbon::now();
+            $code = $code->year.$code->month;
+            $check = User::count();
+            $data = bcrypt($request->np);
+            if( $check == 0 )
+            {
+                $urut = 1;
+                $np = "BataraTv" . $code . $urut;
+                User::create([
+                   'Nomor_pelanggan' => $np,
+                   'name' => $request->name,
+                   'email' => $request->email,
+                   'no_hp' => $request->no_hp,
+                   'alamat' => $request->alamat,
+                   'tagihan' => $request->tagihan,
+                   'roles' => $request->roles,
+                   'password' => $data,
+               ]);
+            }else{
+                $last = User::all()->last();
+                $get = (int)substr($last->Nomor_pelanggan,13) + 1;
+                $np = "BataraTv" . $code . $get;
+                User::create([
+                    'Nomor_pelanggan' => $np,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'no_hp' => $request->no_hp,
+                    'alamat' => $request->alamat,
+                    'tagihan' => $request->tagihan,
+                    'roles' => $request->roles,
+                    'password' => $data,
+                ]);
+            }
+            return back()->withToastSuccess('Data user berhasil di tambah');;
     }
 
     /**
@@ -79,8 +126,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $data = User::findOrfail($id);
+        $data->delete();
+        return back()->withToastSuccess('Data user berhasil di hapus');
     }
 }

@@ -190,7 +190,7 @@ class BillController extends Controller
                 'year_id' => $request->year_id,
             ]);
         }
-        return redirect()->route('Tagihan.index');
+        return redirect()->route('Tagihan.index')->withToastSuccess('Tagihan berhasil di buat');
     }
 
     /**

@@ -32,19 +32,30 @@
            <div class="col">
             <div class="card d-flex justify-content-center">
               <div class="card-body">
-                <form>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('Users.store') }}" method="POST">
+                  @csrf
+                 
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Username</label>
-                          <input type="text" id="input-username" class="form-control" placeholder="Username" value="lucky.jesse">
+                          <input name="name" type="text" id="input-username" class="form-control" placeholder="Username">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Email address</label>
-                          <input type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                          <input name="email" type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
                         </div>
                       </div>
                     </div>
@@ -57,39 +68,38 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Address</label>
-                          <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                          <input name="alamat" id="input-address" class="form-control" placeholder="Jl beringin no 52"  type="text">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-city">City</label>
-                          <input type="text" id="input-city" class="form-control" placeholder="City" value="New York">
+                          <label class="form-control-label" for="hp">No Handphone</label>
+                          <input name="no_hp" type="text" id="hp" class="form-control" placeholder="0812****">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-country">Country</label>
-                          <input type="text" id="input-country" class="form-control" placeholder="Country" value="United States">
+                          <label class="form-control-label" for="tagihan">Tagihan</label>
+                          <input name="tagihan" type="number" id="tagihan" class="form-control" value="53000">
                         </div>
                       </div>
+
                       <div class="col-lg-4">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-country">Postal code</label>
-                          <input type="number" id="input-postal-code" class="form-control" placeholder="Postal code">
+                          <label class="form-control-label" for="role">Role</label>
+                          <select name="roles" id="role" class="form-control">
+                            <option selected value="USERS">User</option>
+                            <option value="ADMIN">Admin</option>
+                          </select>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <hr class="my-4" />
-                  <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">About me</h6>
-                  <div class="pl-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label">About Me</label>
-                      <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                    </div>
+               
+                  <div class=" ml-4 justify-content-end">
+                    <button type="submit" class="btn btn-primary ">Tambahkan</button>
                   </div>
                 </form>
               </div>

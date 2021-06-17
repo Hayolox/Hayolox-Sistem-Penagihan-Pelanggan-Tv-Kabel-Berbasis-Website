@@ -11,7 +11,7 @@
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="#">Tables</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('Users.index') }}">Data User</a></li>
               <li class="breadcrumb-item active" aria-current="page">Tables</li>
             </ol>
           </nav>
@@ -29,7 +29,7 @@
         <div class="card-header border-0">
           <div class="row">
             <div class="col">
-              <h3 class="mb-0">Data Tagihan Sukses</h3>
+              <h3 class="mb-0">Data User</h3>
             </div>
 
             <div class="col justify-content-lg-end mb-3">
@@ -50,12 +50,13 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($users as $user)
               <tr>
-                <th scope="row">108</th>
-                <td>Hizbullah Haidar Anis Al Wakil</td>
-                <td>081253053581</td>
-                <td>Rp 36.000</td>
-                <td>Jl Beringin No 51</td>
+                <th scope="row">{{ $user->Nomor_pelanggan }}</th>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->no_hp }}</td>
+                <td>{{ $user->tagihan }}</td>
+                <td>{{ $user->alamat }}1</td>
                 <td>
                   <a href="" class="btn btn-info">Edit</a>
                   <!-- Button trigger modal -->
@@ -76,19 +77,20 @@
                   
                         <div class="modal-footer d-flex justify-content-center">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <form action="" class="form-inline">
-                            @csrf
+                          <form action="{{ route('Users.destroy', $user->id) }}" method="POST" class="form-inline">
                             @method('delete')
+                            @csrf
                             <button class="btn btn-danger">Yakin</button>
                           </form>
                         </div>
                       </div>
                     </div>
                   </div>
-                </td>
-              
-               
+                </td>    
               </tr>
+              @endforeach
+
+              
             </tbody>
           </table>     
         </div>

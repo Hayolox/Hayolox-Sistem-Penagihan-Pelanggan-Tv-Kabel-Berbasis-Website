@@ -42,6 +42,7 @@
   <!-- Argon Scripts -->
   <!-- Core -->
   @include('includes.admin.scripts')
+  @include('sweetalert::alert')
 </body>
 
 </html>
