@@ -103,9 +103,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findOrfail($id);
+        return view('pages.Admin.users.edit', compact('user'));
+
     }
 
     /**
@@ -115,9 +117,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = User::findOrfail($id);
+        if($request->password)
+        {
+            $data['password'] = bcrypt($request->password);
+        }else{
+            unset($data['password']);
+        }
+        $item->update($data);
+        return back()->withToastSuccess('Data user berhasil di hapus');
+
     }
 
     /**

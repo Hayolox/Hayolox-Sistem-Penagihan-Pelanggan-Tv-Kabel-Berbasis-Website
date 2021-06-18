@@ -58,7 +58,7 @@
                 <td>{{ $user->tagihan }}</td>
                 <td>{{ $user->alamat }}1</td>
                 <td>
-                  <a href="" class="btn btn-info">Edit</a>
+                  <a href="{{ route('Users.edit',$user->id) }}" class="btn btn-info">Edit</a>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                     Hapus
