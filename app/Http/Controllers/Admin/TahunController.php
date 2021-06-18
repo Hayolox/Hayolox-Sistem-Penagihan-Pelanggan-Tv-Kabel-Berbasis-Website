@@ -30,7 +30,7 @@ class TahunController extends Controller
         ]);
         $data = $request->all();
         Year::create($data);
-        return back()->with('success', 'User created successfully.');
+        return back()->withSuccess('Tahun berhasil di buat');
     }
 
     public function edit($id)
@@ -42,7 +42,7 @@ class TahunController extends Controller
     {
         $data = Year::findOrFail($id);
         $tes = $data->delete();
-        return back();
+        return back()->withSuccess('Tahun berhasil di hapus');
     }
 
 }

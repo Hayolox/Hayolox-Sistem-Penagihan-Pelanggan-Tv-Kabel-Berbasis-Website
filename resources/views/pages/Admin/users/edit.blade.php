@@ -41,21 +41,30 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('Users.store') }}" method="POST">
+                <form action="{{ route("Users.update",$user->id) }}" method="POST">
+                  @method("PUT")
                   @csrf
                  
                   <div class="pl-lg-4">
                     <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Username</label>
-                          <input name="name" type="text" id="input-username" class="form-control" placeholder="Username">
+                          <input value="{{ $user->name }}" name="name" type="text" id="input-username" class="form-control" placeholder="Username">
                         </div>
                       </div>
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Email address</label>
-                          <input name="email" type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                          <input value="{{ $user->email }}" name="email" type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-Password">Password</label>
+                          <input  name="password" type="text" id="input-Password" class="form-control" >
+                          <small>Kosongkan jika tidak ingin mengganti password</small>
                         </div>
                       </div>
                     </div>
@@ -68,7 +77,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Address</label>
-                          <input name="alamat" id="input-address" class="form-control" placeholder="Jl beringin no 52"  type="text">
+                          <input value="{{ $user->alamat }}" name="alamat" id="input-address" class="form-control" placeholder="Jl beringin no 52"  type="text">
                         </div>
                       </div>
                     </div>
@@ -76,22 +85,22 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="hp">No Handphone</label>
-                          <input name="no_hp" type="text" id="hp" class="form-control" placeholder="0812****">
+                          <input value="{{ $user->no_hp }}" name="no_hp" type="text" id="hp" class="form-control" placeholder="0812****">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="tagihan">Tagihan</label>
-                          <input name="tagihan" type="number" id="tagihan" class="form-control" value="53000">
+                          <input value="{{ $user->tagihan }}" name="tagihan" type="number" id="tagihan" class="form-control" value="53000">
                         </div>
                       </div>
 
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="role">Role</label>
-                          <select name="roles" id="role" class="form-control">
-                            <option selected value="USERS">User</option>
-                            <option value="ADMIN">Admin</option>
+                          <select  name="roles" id="role" class="form-control">
+                            <option>{{ $user->roles }}</option>
+                            <option value="{{ ($user->roles !== "USERS") ? 'USERS' : 'ADMIN' }}">{{ ($user->roles !== "USERS") ? 'USERS' : 'ADMIN' }}</option>
                           </select>
                         </div>
                       </div>
@@ -99,7 +108,7 @@
                   </div>
                
                   <div class=" ml-4 justify-content-end">
-                    <button type="submit" class="btn btn-primary ">Tambahkan</button>
+                    <button type="submit" class="btn btn-primary ">Update</button>
                   </div>
                 </form>
               </div>
