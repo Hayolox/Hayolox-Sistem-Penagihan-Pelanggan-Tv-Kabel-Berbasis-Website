@@ -53,11 +53,11 @@ class UserController extends Controller
             $code = Carbon::now();
             $code = $code->year.$code->month;
             $check = User::count();
-            $data = bcrypt($request->np);
             if( $check == 0 )
             {
                 $urut = 1;
                 $np = "BataraTv" . $code . $urut;
+                $password = bcrypt($np);
                 User::create([
                    'Nomor_pelanggan' => $np,
                    'name' => $request->name,
@@ -66,12 +66,13 @@ class UserController extends Controller
                    'alamat' => $request->alamat,
                    'tagihan' => $request->tagihan,
                    'roles' => $request->roles,
-                   'password' => $data,
+                   'password' => $password,
                ]);
             }else{
                 $last = User::all()->last();
                 $get = (int)substr($last->Nomor_pelanggan,13) + 1;
                 $np = "BataraTv" . $code . $get;
+                $password = bcrypt($np);
                 User::create([
                     'Nomor_pelanggan' => $np,
                     'name' => $request->name,
@@ -80,7 +81,7 @@ class UserController extends Controller
                     'alamat' => $request->alamat,
                     'tagihan' => $request->tagihan,
                     'roles' => $request->roles,
-                    'password' => $data,
+                    'password' => $password,
                 ]);
             }
             return back()->withToastSuccess('Data user berhasil di tambah');;

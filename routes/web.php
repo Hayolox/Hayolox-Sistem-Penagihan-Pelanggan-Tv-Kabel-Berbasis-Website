@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\SuksesController;
 use App\Http\Controllers\Admin\TahunController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('Admin')->group(function(){
+Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard-admin');
 
         Route::get('/Tagihan/delete/tahun', [TahunController::class, 'index'])->name('delete-tahun');
@@ -40,5 +40,9 @@ Route::prefix('Admin')->group(function(){
         
      
 });
+
+
+
+Auth::routes();
 
 
