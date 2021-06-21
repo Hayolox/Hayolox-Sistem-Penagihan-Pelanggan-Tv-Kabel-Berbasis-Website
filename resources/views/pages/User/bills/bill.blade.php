@@ -27,9 +27,10 @@
                         <h5 class="card-title text-uppercase text-white mb-0">{{ $bill->month->bulan }}  {{ $bill->year->tahun }}</h5>
                         <span class="h2 font-weight-bold text-white mb-0">{{ number_format($bill->user->tagihan, 0, ',', '.') }}</span>
                       </div>
-                  
+                    
                       <div class="col-auto">
-                        <a href="" class=" btn btn-info">Bayar</a>
+                             <!-- Button trigger modal -->
+                        <a href="{{route('tagihan-manual',$bill->id)}}" class="btn btn-info">Bayar</a>
                       </div>
                     </div>
                   </div>

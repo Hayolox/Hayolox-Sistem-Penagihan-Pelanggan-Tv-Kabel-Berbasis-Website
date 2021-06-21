@@ -134,7 +134,7 @@ class UserController extends Controller
             unset($data['password']);
         }
         $item->update($data);
-        return back()->withToastSuccess('Data user berhasil di hapus');
+        return back()->withToastSuccess('Data user berhasil di ubah');
 
     }
 
