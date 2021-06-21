@@ -22,15 +22,16 @@ class BillsController extends Controller
         return view('pages.User.bills.manual', compact('bill'));
     }
 
-    public function pay(Request $request)
+    public function pay($id)
     {
+       $bill = Bill::findOrFail($id);
        Verification::create([
                 'user_id' => Auth::user()->id,
-                'month_id' => $request->month,
-                'year_id' => $request->year
+                'month_id' => $bill->month_id,
+                'year_id' => $bill->year_id,
        ]);
 
-       Bill::where('id', $request->id)->delete();
+       Bill::where('id', $bill->id)->delete();
 
        return redirect()->route('bill-user');
 

@@ -41,11 +41,8 @@
                 </nav>
                 <div class="tab-content mt-2" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <form action="{{ route('proses-pembayaran') }}" method="POST">
+                    <form action="{{ route('proses-pembayaran',$bill->id) }}" method="POST">
                       @csrf
-                      <input hidden type="text" name="id" value="{{ $bill->id }}">
-                      <input hidden type="text" name="year" value="{{ $bill->year_id }}">
-                      <input hidden type="text" name="month" value="{{ $bill->month_id }}" >
                       <div class="pl-lg-4">
                         <div class="row">
                           <div class="col-lg-12 text-center alert alert-info mt-2">
@@ -54,8 +51,6 @@
                           
                         </div>
                       </div>
-    
-              
                       <div class=" ml-4 justify-content-end">
                         <button type="submit" class="btn btn-primary ">Bayar tagihan sekarang</button>
                       </div>

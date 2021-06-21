@@ -9,5 +9,5 @@ class Verification extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'month_id', 'year_id'];
+    protected $fillable  = ['user_id', 'month_id', 'year_id'];
 }

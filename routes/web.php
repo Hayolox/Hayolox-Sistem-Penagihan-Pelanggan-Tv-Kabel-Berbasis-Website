@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->middleware(['auth','users'])->group(function(){
         Route::get('/', [BillsController::class, 'index'])->name('bill-user');
-        Route::post('/Proses-pembayaran', [BillsController::class, 'pay'])->name('proses-pembayaran');
+        Route::post('/Proses-pembayaran/{id}', [BillsController::class, 'pay'])->name('proses-pembayaran');
         Route::get('/Tagihan-manual/{id}', [BillsController::class, 'manual'])->name('tagihan-manual');
 });
 
