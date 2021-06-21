@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SuksesController;
 use App\Http\Controllers\Admin\TahunController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
+use App\Http\Controllers\Users\BillsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::prefix('/')->middleware(['auth','users'])->group(function(){
+        Route::get('/', [BillsController::class, 'index'])->name('bill-user');
+});
 
 Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard-admin');
