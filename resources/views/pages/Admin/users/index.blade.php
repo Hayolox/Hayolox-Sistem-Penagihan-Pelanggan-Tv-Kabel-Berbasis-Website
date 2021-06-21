@@ -36,6 +36,14 @@
              <a href="{{ route('Users.create') }}" class="btn btn-primary" >Tambahkan Data User</a>
             </div>
 
+            <div class="col justify-content-lg-end mb-3">
+                <form action="{{ route('Users.index') }}" method="GET" class="form-inline">
+                  @csrf
+                  <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Np" >
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> 
+            </div>
+
         <!-- Light table -->
         <div class="table-responsive">
           <table class="table">
@@ -89,10 +97,9 @@
                 </td>    
               </tr>
               @endforeach
-
-              
             </tbody>
-          </table>     
+          </table>  
+          {{ $users->links() }}   
         </div>
       </div>
     </div>

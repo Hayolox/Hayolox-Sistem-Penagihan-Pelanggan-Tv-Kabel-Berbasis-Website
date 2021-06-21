@@ -14,9 +14,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(20);
+        if($request->has('search'))
+        {
+            $users = User::where('Nomor_pelanggan','like',"%".$request->search."%")->paginate();
+        }else{
+            $users = User::paginate(10);
+        }
         return view('pages.Admin.users.index',compact('users'));
     }
 

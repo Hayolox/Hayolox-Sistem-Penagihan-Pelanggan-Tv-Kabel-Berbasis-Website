@@ -26,7 +26,7 @@ class TahunController extends Controller
             'tahun' => 'required|unique:years,tahun',
         ],[
             'tahun.required' => 'tahun tidak boleh kosong',
-            'tahun.unique' => 'tahun sudah  sudah di buat',
+            'tahun.unique' => 'tahun   sudah di buat',
         ]);
         $data = $request->all();
         Year::create($data);

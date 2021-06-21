@@ -54,10 +54,11 @@ class BillController extends Controller
      */
     public function store(Request $request)
         {$request->validate([
-            'month_id' => 'required|unique:bills,month_id',
+            'month_id'=> 'required',
+            'year_id' => 'required',
         ],[
-            'month_id.required' => 'bulan  tidak boleh kosong',
-            'month_id.unique' => 'tagihan bulan ini sudah  sudah di buat',
+            'year_id.required' => 'Tahun tidak boleh kosong',
+            'month_id.required' => 'Bulan tidak boleh kosong'
         ]);
         $users = User::where('roles', 'USERS')->get(); 
         if($request->month_id == 1)
