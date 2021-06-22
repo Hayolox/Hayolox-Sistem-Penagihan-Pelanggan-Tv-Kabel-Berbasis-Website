@@ -33,8 +33,8 @@ class BillsController extends Controller
 
        Bill::where('id', $bill->id)->delete();
 
-       return redirect()->route('bill-user');
-
-       
+       return redirect('https://api.whatsapp.com/send?phone=+6282157893482&text=Silahkan+konfirmasi+pembayaran+dengan+mengisi+datat+di+bawah+ini%0ANama+%3A%0AAlamat+%3A%0ANo+pembayaran+%3A%0ANo+Hp+%3A%0A*jangan+lupa+kirim+bukti+transfer*'); 
     }
+
+    
 }

@@ -43,20 +43,70 @@
                   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <form action="{{ route('proses-pembayaran',$bill->id) }}" method="POST">
                       @csrf
-                      <div class="pl-lg-4">
+                      <div class="pl-lg-4 ">
                         <div class="row">
-                          <div class="col-lg-12 text-center alert alert-info mt-2">
-                              Tagihan anda bulan {{ $bill->month->bulan }} tahun {{ $bill->year->tahun }} sebesar Rp {{ number_format($bill->user->tagihan, 0, ',', '.')  }}
+                          <div class="col-d-3 col-md-6 mt-3">
+                            <div class="card" style="width: 18rem;" >
+                              <div class="card-body">
+                                <h1 class="card-title">Informasi Penting</h1>
+                                <h3 class="card-text">Di pastikan anda tranfer terlebih dahulu sebelum melakukan proses "konfirmasi pembayaran"</h3>
+                                <h3 class="card-text">Proses konfirmasi pembayaran tagihan akan membutuhkan waktu sekitar 20 menit (dari pesan WhatsApp dikirim). Mohon menunggu dengan sabar dan terima kasih</h3>
+
+
+                                <h1 class="card-title mt-2">Ada kendala? silahkan hubungi kami</h1>
+                                <h3 class="card-text">No. WhatsApp 0812*******</h3>
+                              </div>
+                            </div>
                           </div>
-                          
+
+                          <div class="col-d-3 col-md-6 mt-3">
+                            <div class="card" style="width: 18rem;" >
+                              <div class="card-body">
+                                <h1 class="card-title">Tagihan Anda</h1>
+                                <h3 class="card-text">Bulan {{ $bill->month->bulan }}</h3>
+                                <h3 class="card-text">tahun {{ $bill->year->tahun }}</h3>
+                                <p class="card-text">Sebesar Rp {{ number_format ($bill->user->tagihan, 0, ',', '.')  }}</p>
+                                <h1 class="card-title">Transfer Pembayaran </h1>
+                                <img src="{{ asset('logo/logo_bank.png') }}" alt="Logo Bank Bri" style="height: 50px">
+                                <h3 class="card-text">PT Akil Sejahtera</h3>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
-                      <div class=" ml-4 justify-content-end">
-                        <button type="submit" class="btn btn-primary ">Bayar tagihan sekarang</button>
+                      <div class=" ml-4" style="margin-inline-end: ">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+                          Konfirmasi Pembayaran
+                        </button>
+      
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Apakah anda sudah melakukan pembayaran</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                        
+                              <div class="modal-footer d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
+                                <button class="btn btn-danger">Sudah</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </form>
                   </div>
-                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="alert alert-danger text-center text-white">
+                       Comming Soon
+                    </div>
+                  </div>
                  
                 </div>
 
