@@ -223,9 +223,11 @@ class BillController extends Controller
      * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bill $bill)
+    public function update($id)
     {
-        //
+        $bill = Bill::findOrFail($id);
+       
+        return redirect('https://api.whatsapp.com/send?phone=62'.$bill->user->no_hp.'&text=Halo+'.$bill->user->name.' anda+belum+membayar+tagihan+bulan+'.$bill->month->bulan.'+harap+bayar+segera.+Anda+bisa+bayar+secara+langsung+di+kantor+BataraTv+Jl.+Pramuka+atau+lewat+website+kami:+https://www.youtube.com/watch?v=bmVKaAV_7-A%0AApabila+ada+pertanyaan+silahkan+hubungi+di+0821520312+atau+chat+wa+ini'); 
     }
 
     /**

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->middleware(['auth','users'])->group(function(){
         Route::get('/', [BillsController::class, 'index'])->name('bill-user');
-       
+        Route::get('/Riwayat-pembayaran', [BillsController::class, 'riwayat'])->name('riwayat');
         Route::post('/Proses-pembayaran/{id}', [BillsController::class, 'pay'])->name('proses-pembayaran');
         Route::get('/Tagihan-manual/{id}', [BillsController::class, 'manual'])->name('tagihan-manual');
 
@@ -40,6 +40,7 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::resource('Tagihan', BillController::class);
 
         Route::get('/Verifikasi-Tagihan', [VerifikasiController::class, 'index'])->name('verifikasi');
+        Route::get('/cancel-Tagihan/{id}', [VerifikasiController::class, 'cancel'])->name('cancel-tagihan');
 
         Route::get('/Sukses', [SuksesController::class, 'index'])->name('sukses');
 

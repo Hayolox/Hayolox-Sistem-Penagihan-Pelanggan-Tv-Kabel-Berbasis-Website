@@ -68,6 +68,7 @@
                                 <p class="card-text">Sebesar Rp {{ number_format ($bill->user->tagihan, 0, ',', '.')  }}</p>
                                 <h1 class="card-title">Transfer Pembayaran </h1>
                                 <img src="{{ asset('logo/logo_bank.png') }}" alt="Logo Bank Bri" style="height: 50px">
+                                <h4 class="card-text">4271284635</h4>
                                 <h3 class="card-text">PT Akil Sejahtera</h3>
                               </div>
                             </div>
@@ -93,7 +94,7 @@
                         
                               <div class="modal-footer d-flex justify-content-center">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
-                                <button class="btn btn-danger">Sudah</button>
+                                <button class="btn btn-info">Sudah</button>
                                 </form>
                               </div>
                             </div>

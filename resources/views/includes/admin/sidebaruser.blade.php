@@ -20,7 +20,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link {{ (request()->is('Admin/Tahun*')) ? 'active' : '' }} {{ (request()->is('Admin/Tagihan*')) ? 'active' : '' }}" href="{{ route('Tagihan.index') }}">
+            <a class="nav-link {{ (request()->is('Riwayat-pembayaran')) ? 'active' : '' }}" href="{{ route('riwayat') }}">
               <i class="ni ni-bullet-list-67 text-default"></i>
               <span class="nav-link-text">Riwayat Pembayaran</span>
             </a>

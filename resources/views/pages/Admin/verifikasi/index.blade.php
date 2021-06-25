@@ -45,39 +45,15 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($verifikasions as $verifikasi)
               <tr>
-                <th scope="row">108</th>
-                <td>Hizbullah Haidar Anis Al Wakil</td>
-                <td>081253053581</td>
-                <td>Jl Beringin No 51</td>
+                <th scope="row">{{ $verifikasi->user->Nomor_pelanggan }}</th>
+                <td>{{ $verifikasi->user->name }}</td>
+                <td>{{ $verifikasi->user->no_hp }}</td>
+                <td>{{ $verifikasi->user->alamat }}</td>
                 <td>  
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                    Verifikasi
-                  </button>
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Yakin Untuk Verifikasi?</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
                   
-                        <div class="modal-footer d-flex justify-content-center">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <form action="" class="form-inline">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-info">Yakin</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
@@ -97,9 +73,8 @@
                   
                         <div class="modal-footer d-flex justify-content-center">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <form action="" class="form-inline">
+                          <form action="{{ route('cancel-tagihan', $verifikasi->id) }}" class="form-inline">
                             @csrf
-                            @method('delete')
                             <button class="btn btn-danger">Yakin</button>
                           </form>
                         </div>
@@ -109,6 +84,7 @@
                   
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>     
         </div>

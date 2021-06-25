@@ -75,7 +75,15 @@
                 <td>{{ $bill->user->tagihan }}</td>
                 <td>{{ $bill->user->alamat }}</td>
                 <td>{{ $bill->month->bulan}} | {{ $bill->year->tahun }}</td>
-                <td>Rencana Wa</td>   
+                <td>
+                  <form action="{{ route('Tagihan.update',$bill->id) }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <button type="submit">
+                      <i class="fab fa-whatsapp"></i>
+                    </button>
+                  </form>
+                </td>   
                 @endforeach  
               </tr>
               {{ $bills->links() }}
