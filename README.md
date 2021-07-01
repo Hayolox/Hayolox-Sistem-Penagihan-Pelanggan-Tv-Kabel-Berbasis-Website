@@ -6,23 +6,20 @@ Helloo... Project ini merupakan sistem penagihan pelanggan tv kabel berbasis web
 
  Admin:
  
- 1.Fitur Tagihan
- 
-   Fitur ini berfungsi menambahkan tagihan tiap bulan dan data-data pelanggan yang belum membayar tagihan.
+ 1.Fitur Tagihan,Fitur ini berfungsi menambahkan tagihan tiap bulan dan data-data pelanggan yang belum membayar tagihan.
    
- 2.Fitur verifikasi Pembayaran
- 
-   fitur ini berfungsi untuk memvervikasi tagihan yang sudah di bayar
+ 2.Fitur verifikasi Pembayaran, fitur ini berfungsi untuk memvervikasi tagihan yang sudah di bayar
    
-3.Data User
-
-   Admin bisa menambahkan,mengedit dan menghapus data-data user(pelanggan)
+ 3.Data User, Admin bisa menambahkan,mengedit dan menghapus data-data user(pelanggan)
    
  User:
  
  1.User dapat melihat tagihan bulanan
  
- 2.user dapat meliat riwayat tagihan yang sudah di bayar
+ 2.User dapat membayar tagihan bulanan secara transfer bank atau virtual account
+ 
+ 3.user dapat meliat riwayat tagihan yang sudah di bayar 
+ 
  
  ## Catatan
  
