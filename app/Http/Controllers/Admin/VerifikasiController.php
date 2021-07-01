@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
+use App\Models\succes;
 use App\Models\Verification;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class VerifikasiController extends Controller
 {
     public function index()
     {
-        $verifikasions =  Verification::get();
+        $verifikasions =  Verification::latest()->paginate();
         return view('pages.Admin.verifikasi.index',compact('verifikasions'));
     }
 
@@ -27,5 +28,20 @@ class VerifikasiController extends Controller
 
        Verification::where('id', $cancel->id)->delete();
        return back()->withToastSuccess('Data verification ' . $cancel->user->name . ' di batalkan');
+    }
+
+    public function succes($id)
+    {
+    
+        $confirm = Verification::findOrfail($id);
+
+        succes::create([
+             'user_id' => $confirm->user_id,
+             'month_id' => $confirm->month_id,
+             'year_id' => $confirm->year_id,
+        ]);
+ 
+        Verification::where('id', $confirm->id)->delete();
+        return back()->withToastSuccess('Data verification ' . $confirm->user->name . ' di confirm');
     }
 }

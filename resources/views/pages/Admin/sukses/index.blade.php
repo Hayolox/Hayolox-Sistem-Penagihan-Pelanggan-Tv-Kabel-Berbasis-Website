@@ -40,25 +40,23 @@
                 <th scope="col">Np</th>
                 <th scope="col">Nama</th>
                 <th scope="col">No Hp</th>
-                <th scope="col">Tagihan</th>
                 <th scope="col">Alamat </th>
-                <th scope="col">Status </th>
+                <th scope="col">Tgl Pembayaran</th>
+               
               </tr>
             </thead>
             <tbody>
+              @foreach ($succes as $item)
               <tr>
-                <th scope="row">108</th>
-                <td>Hizbullah Haidar Anis Al Wakil</td>
-                <td>081253053581</td>
-                <td>Rp 36.000</td>
-                <td>Jl Beringin No 51</td>
-                <td class="text-info">
-                  Sukses
-                </td>
-              
-               
+                <th scope="row">{{ $item->user->Nomor_pelanggan }}</th>
+                <td>{{ $item->user->name }}</td>
+                <td>{{ $item->user->no_hp }}</td>
+                <td>{{ $item->user->alamat }}</td>
+                <td>{{ $item->created_at }}</td>
               </tr>
+              @endforeach
             </tbody>
+            {{ $succes->links() }}
           </table>     
         </div>
       </div>

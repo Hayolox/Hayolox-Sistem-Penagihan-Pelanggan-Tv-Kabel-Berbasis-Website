@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\SuksesController;
 use App\Http\Controllers\Admin\TahunController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Users\BillsController;
+use App\Models\Verification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +43,7 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
 
         Route::get('/Verifikasi-Tagihan', [VerifikasiController::class, 'index'])->name('verifikasi');
         Route::get('/cancel-Tagihan/{id}', [VerifikasiController::class, 'cancel'])->name('cancel-tagihan');
+        Route::get('/confirm-Tagihan/{id}', [VerifikasiController::class, 'succes'])->name('confirm-tagihan');
 
         Route::get('/Sukses', [SuksesController::class, 'index'])->name('sukses');
 
