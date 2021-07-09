@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
            
             
-            @forelse ($bills as $bill)
+          @foreach ($bills as $bill)
             <div class="col-xl-3 col-md-6">
                 <div class="card card-stats">
                   <!-- Card body -->
@@ -31,10 +31,29 @@
                     </div>
                   </div>
                 </div>
-            </div>
-            @empty
-            
-            @endforelse
+            </div>          
+          @endforeach
+
+            @foreach ($bills as $bill)
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-stats">
+                  <!-- Card body -->
+                  <div class="card-body bg-info ">
+                    <div class="row">
+                      <div class="col text-dark">
+                        <h5 class="card-title text-uppercase text-white mb-0">{{ $bill->month->bulan }}  {{ $data->year->tahun }}</h5>
+                        <span class="h2 font-weight-bold text-white mb-0">{{ number_format($bill->user->tagihan, 0, ',', '.') }}</span>
+                      </div>
+                    
+                      <div class="col-auto mt-2">
+                             <!-- Button trigger modal -->
+                        <p  class="btn btn-white text-dark">Succes</p>     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>          
+            @endforeach
         </div>
       </div>
     </div>

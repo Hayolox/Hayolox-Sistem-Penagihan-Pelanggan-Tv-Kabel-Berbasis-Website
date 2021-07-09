@@ -8,6 +8,7 @@ use App\Models\Month;
 use App\Models\User;
 use App\Models\Year;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
 class BillController extends Controller
@@ -19,17 +20,31 @@ class BillController extends Controller
      */
     public function index(Request $request)
     {
-      
-        $years = Year::get();
         $months = Month::get();
-        $get = $request->month;
-        if($request->month)
+    
+        if($request->search)
         {
-            $bills =  Bill::with(['user'])->where('month_id', $request->month)->paginate(20); 
+            $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+            ->join('months', 'months.id', '=', 'bills.month_id')
+            ->join('years', 'years.id', '=', 'bills.year_id')
+            ->where('users.Nomor_pelanggan', 'LIKE', '%'.$request->search.'%')->paginate(50);
+            return view('pages.Admin.Tagihan.index', compact('bills','months'));
         }else{
-            $bills =  Bill::with(['user'])->paginate(20);
+            $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+            ->join('months', 'months.id', '=', 'bills.month_id')
+            ->join('years', 'years.id', '=', 'bills.year_id')->paginate(50);
+            return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
         }
-       return view('pages.Admin.Tagihan.index', compact('bills','years','months'));
+    }
+
+    public function month($id)
+    {
+        $months = Month::get();
+        $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+        ->join('months', 'months.id', '=', 'bills.month_id')
+        ->join('years', 'years.id', '=', 'bills.year_id')
+        ->where('months.id', 'LIKE', '%'.$id.'%')->paginate(50);
+        return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
     }
 
     /**

@@ -36,21 +36,24 @@
             <div class="col">
               <h3 class="mb-0">Data Tagihan</h3>
             </div>
-
             <form class="form-inline mb-4" action="{{ route('Tagihan.index') }}" method="GET">
+              <!-- Example single danger button -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Bulan
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{ route('Tagihan.index') }}">All</a>
+                  @foreach ($months as $month)
+                  <a class="dropdown-item" href="{{ route('tagihan-bulan',$month->id) }}">{{ $month->bulan }}</a>
+                  @endforeach
+                </div>
+              </div>
               @csrf
               <div class="form-group ml-5 mr-3">
-                <label for="exampleFormControlSelect1">Bulan</label>
-                <select name="month" class="form-control" id="exampleFormControlSelect1">
-                  <option  selected>Choose Month</option>
-                  @foreach ($months as $month)
-                  <option value="{{ $month->id }}">{{ $month->bulan }}</option>
-                  @endforeach
-                </select>
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Np" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </div>
-
-           
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter</button>
             </form>
         <!-- Light table -->
         <div class="table-responsive">
@@ -69,12 +72,12 @@
             <tbody>
               @foreach ($bills as $bill)
               <tr>
-                <th scope="row">{{ $bill->user->Nomor_pelanggan }}</th>
-                <td>{{ $bill->user->name }}</td>
-                <td>{{ $bill->user->no_hp }}</td>
-                <td>{{ $bill->user->tagihan }}</td>
-                <td>{{ $bill->user->alamat }}</td>
-                <td>{{ $bill->month->bulan}} | {{ $bill->year->tahun }}</td>
+                <th scope="row">{{ $bill->Nomor_pelanggan }}</th>
+                <td>{{ $bill->name }}</td>
+                <td>{{ $bill->no_hp }}</td>
+                <td>{{ $bill->tagihan }}</td>
+                <td>{{ $bill->alamat }}</td>
+                <td>{{ $bill->bulan}} | {{ $bill->tahun }}</td>
                 <td>
                   <form action="{{ route('Tagihan.update',$bill->id) }}" method="POST">
                     @method('PUT')
@@ -86,7 +89,11 @@
                 </td>   
                 @endforeach  
               </tr>
-              {{ $bills->links() }}
+              @if($bills instanceof \Illuminate\Pagination\LengthAwarePaginator )
+
+              {{$bills->links()}}
+           
+           @endif
             </tbody>
           </table>     
         </div>

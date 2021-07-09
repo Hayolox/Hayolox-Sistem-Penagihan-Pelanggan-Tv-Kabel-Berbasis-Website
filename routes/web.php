@@ -39,6 +39,7 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::post('/Tagihan/store/tahun/', [TahunController::class, 'store'])->name('store-tahun');
         Route::post('/Tagihan/edit/tahun/{id}', [TahunController::class, 'edit'])->name('edit-tahun');
         Route::get('/Tagihan/delete/tahun/{id}', [TahunController::class, 'destroy'])->name('destroy-tahun');
+        Route::get('/Tagihan/Bulan/{id}', [BillController::class, 'month'])->name('tagihan-bulan');
         Route::resource('Tagihan', BillController::class);
 
         Route::get('/Verifikasi-Tagihan', [VerifikasiController::class, 'index'])->name('verifikasi');

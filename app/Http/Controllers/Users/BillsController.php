@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
+use App\Models\succes;
 use App\Models\Verification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,10 +41,9 @@ class BillsController extends Controller
     public function riwayat()
     {
         $bills = Verification::where('user_id', Auth::user()->id)->get();
-        return view('pages.User.bills.riwayat', compact('bills'));
+        $bills = succes::where('user_id', Auth::user()->id)->latest()->paginate('5');
+        return view('pages.User.bills.riwayat', compact('bills','bills'));
     }
-
-    
 
     
 }
