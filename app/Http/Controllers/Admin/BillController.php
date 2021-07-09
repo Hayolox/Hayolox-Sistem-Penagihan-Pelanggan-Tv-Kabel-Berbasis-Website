@@ -47,6 +47,36 @@ class BillController extends Controller
         return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
     }
 
+    public function showinteries($id)
+    {
+        $months = Month::get();
+
+        if($id == 10)
+        {
+            $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+            ->join('months', 'months.id', '=', 'bills.month_id')
+            ->join('years', 'years.id', '=', 'bills.year_id')->paginate(10);
+            return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
+        }elseif($id == 50)
+        {
+            $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+            ->join('months', 'months.id', '=', 'bills.month_id')
+            ->join('years', 'years.id', '=', 'bills.year_id')->paginate(50);
+            return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
+        }elseif($id == 100)
+        {
+            $bills = DB::table('bills')->join('users', 'users.id', '=', 'bills.user_id')
+            ->join('months', 'months.id', '=', 'bills.month_id')
+            ->join('years', 'years.id', '=', 'bills.year_id')->paginate(100);
+            return view('pages.Admin.Tagihan.index', compact('bills', 'months'));
+        }elseif($id != 10 or $id !=50 or $id != 100)
+        {
+            return back();
+        }
+        
+       
+    }
+
     /**
      * Show the form for creating a new resource.
      *

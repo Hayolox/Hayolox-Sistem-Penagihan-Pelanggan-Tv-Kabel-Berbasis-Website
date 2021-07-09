@@ -37,6 +37,17 @@
               <h3 class="mb-0">Data Tagihan</h3>
             </div>
             <form class="form-inline mb-4" action="{{ route('Tagihan.index') }}" method="GET">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Show
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{ route('Tagihan.index') }}">All</a>        
+                  <a class="dropdown-item" href="{{ route('showinteries',10) }}">10</a>
+                  <a class="dropdown-item" href="{{ route('showinteries',50) }}">50</a>
+                  <a class="dropdown-item" href="{{ route('showinteries',100) }}">100</a>
+                </div>
+              </div>
               <!-- Example single danger button -->
               <div class="btn-group">
                 <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,11 +100,11 @@
                 </td>   
                 @endforeach  
               </tr>
-              @if($bills instanceof \Illuminate\Pagination\LengthAwarePaginator )
+            
 
               {{$bills->links()}}
            
-           @endif
+         
             </tbody>
           </table>     
         </div>
