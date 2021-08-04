@@ -53,9 +53,9 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
 
         Route::resource('Users', UserController::class);
 
-      
-        
-     
+
+
+
 });
 
 Auth::routes(['register' => false]);

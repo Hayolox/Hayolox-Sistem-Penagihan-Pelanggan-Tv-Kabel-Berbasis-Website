@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Tagihan Sukses')
 @section('content')
-    
+
 <div class="header bg-primary pb-6">
   <div class="container-fluid">
     <div class="header-body">
@@ -42,7 +42,7 @@
                 <th scope="col">No Hp</th>
                 <th scope="col">Alamat </th>
                 <th scope="col">Tgl Pembayaran</th>
-               
+
               </tr>
             </thead>
             <tbody>
@@ -57,15 +57,15 @@
               @endforeach
             </tbody>
             {{ $succes->links() }}
-          </table>     
+          </table>
         </div>
       </div>
     </div>
   </div>
-  
-  
- 
+
+
+
 </div>
 </div>
-    
+
 @endsection
