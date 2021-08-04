@@ -18,6 +18,7 @@ class CreateSuccesTable extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('month_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

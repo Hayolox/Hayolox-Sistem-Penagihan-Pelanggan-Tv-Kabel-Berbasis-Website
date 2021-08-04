@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Users\BillsController;
+use App\Http\Controllers\Users\VaController;
 use App\Models\Verification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->middleware(['auth','users'])->group(function(){
         Route::get('/', [BillsController::class, 'index'])->name('bill-user');
         Route::get('/Riwayat-pembayaran', [BillsController::class, 'riwayat'])->name('riwayat');
-        Route::post('/Proses-pembayaran/{id}', [BillsController::class, 'pay'])->name('proses-pembayaran');
         Route::get('/Tagihan-manual/{id}', [BillsController::class, 'manual'])->name('tagihan-manual');
         Route::get('/Profil/edit/{id}', [BillsController::class, 'createprofil'])->name('profil-user');
         Route::patch('/Profil/update/{id}', [BillsController::class, 'updateprofil'])->name('update-profil');
-
+        Route::post('/Proses-pembayaran/{id}', [BillsController::class, 'pay'])->name('proses-pembayaran');
+        Route::post('/Pembayaran-va/{id}', [VaController::class, 'va'])->name('proses-pembayaran-va');
 });
 
 Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
@@ -50,11 +51,7 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::get('/confirm-Tagihan/{id}', [VerifikasiController::class, 'succes'])->name('confirm-tagihan');
 
         Route::get('/Sukses', [SuksesController::class, 'index'])->name('sukses');
-
         Route::resource('Users', UserController::class);
-
-
-
 
 });
 

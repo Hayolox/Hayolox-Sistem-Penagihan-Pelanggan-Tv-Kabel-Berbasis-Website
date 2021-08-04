@@ -9,8 +9,8 @@ class succes extends Model
 {
     use HasFactory;
 
-    protected $fillable  = ['user_id', 'month_id', 'year_id'];
-    
+    protected $fillable  = ['user_id', 'month_id', 'year_id', 'status'];
+
     public function user()
     {
         return $this->hasOne( User::class, 'id', 'user_id');

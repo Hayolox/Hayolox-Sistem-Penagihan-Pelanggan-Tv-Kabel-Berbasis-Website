@@ -35,8 +35,9 @@ class BillsController extends Controller
 
        Bill::where('id', $bill->id)->delete();
 
-       return redirect('https://api.whatsapp.com/send?phone=+6282157893482&text=Silahkan+konfirmasi+pembayaran+dengan+mengisi+datat+di+bawah+ini%0ANama+%3A%0AAlamat+%3A%0ANo+pembayaran+%3A%0ANo+Hp+%3A%0A*jangan+lupa+kirim+bukti+transfer*'); 
+       return redirect('https://api.whatsapp.com/send?phone=+6282157893482&text=Silahkan+konfirmasi+pembayaran+dengan+mengisi+datat+di+bawah+ini%0ANama+%3A%0AAlamat+%3A%0ANo+pembayaran+%3A%0ANo+Hp+%3A%0A*jangan+lupa+kirim+bukti+transfer*');
     }
+
 
 
     public function riwayat()
@@ -54,7 +55,7 @@ class BillsController extends Controller
 
     public function updateprofil($id, Request $request)
     {
-    
+
         $data = $request->all();
         $item = User::findOrfail($id);
         if($request->password)
@@ -67,5 +68,5 @@ class BillsController extends Controller
         return back()->withToastSuccess('Data user berhasil di ubah');
     }
 
-    
+
 }

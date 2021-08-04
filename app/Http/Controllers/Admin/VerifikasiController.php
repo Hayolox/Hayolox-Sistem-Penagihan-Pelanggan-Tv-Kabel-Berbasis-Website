@@ -32,15 +32,16 @@ class VerifikasiController extends Controller
 
     public function succes($id)
     {
-    
+
         $confirm = Verification::findOrfail($id);
 
         succes::create([
              'user_id' => $confirm->user_id,
              'month_id' => $confirm->month_id,
              'year_id' => $confirm->year_id,
+             'status' => 'Succes',
         ]);
- 
+
         Verification::where('id', $confirm->id)->delete();
         return back()->withToastSuccess('Data verification ' . $confirm->user->name . ' di confirm');
     }

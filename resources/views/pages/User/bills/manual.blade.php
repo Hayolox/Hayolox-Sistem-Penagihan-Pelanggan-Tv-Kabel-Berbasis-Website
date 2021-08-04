@@ -1,7 +1,7 @@
 @extends('layouts.User')
 @section('title', 'Bayar Tagihan')
 @section('content')
-    
+
 <div class="header bg-primary pb-6">
   <div class="container-fluid">
     <div class="header-body">
@@ -28,11 +28,11 @@
         <!-- Card header -->
         <div class="card-header border-0">
           <div class="row">
-            
+
            <div class="col">
             <div class="card d-flex justify-content-center">
               <div class="card-body">
-                
+
                 <nav>
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ManuaL</a>
@@ -80,7 +80,7 @@
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
                           Konfirmasi Pembayaran
                         </button>
-      
+
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -91,9 +91,9 @@
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                        
+
                               <div class="modal-footer d-flex justify-content-center">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button class="btn btn-info">Sudah</button>
                                 </form>
                               </div>
@@ -104,25 +104,42 @@
                     </form>
                   </div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="alert alert-danger text-center text-white">
-                       Comming Soon
-                    </div>
+                   <div class="row">
+                       <form action="{{ route('proses-pembayaran-va',$bill->id) }}" method="POST">
+                        @csrf
+                        <div class="col-d-3 col-md-6 mt-3">
+                            <div class="card" style="width: 18rem;" >
+                              <div class="card-body">
+                                <h1 class="card-title">Tagihan Anda</h1>
+                                <h3 class="card-text">Bulan {{ $bill->month->bulan }}</h3>
+                                <h3 class="card-text">tahun {{ $bill->year->tahun }}</h3>
+                                <p class="card-text">Sebesar Rp {{ number_format ($bill->user->tagihan, 0, ',', '.')  }}</p>
+                                <h1 class="card-title">Transfer Pembayaran </h1>
+                                <img src="{{ asset('logo/logo_bank.png') }}" alt="Logo Bank Bri" style="height: 50px">
+                                <h4 class="card-text">4271284635</h4>
+                                <h3 class="card-text">PT Akil Sejahtera</h3>
+                                <button type="submit" class="btn btn-info mt-2">Bayar Sekarang</button>
+                              </div>
+                            </div>
+                          </div>
+                       </form>
+                   </div>
                   </div>
-                 
+
                 </div>
 
-               
+
               </div>
             </div>
            </div>
-        
+
       </div>
     </div>
   </div>
-  
-  
- 
+
+
+
 </div>
 </div>
-    
+
 @endsection

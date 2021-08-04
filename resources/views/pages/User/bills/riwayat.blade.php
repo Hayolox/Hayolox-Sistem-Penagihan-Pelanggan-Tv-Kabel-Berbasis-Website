@@ -22,17 +22,17 @@
                       <h5 class="card-title text-uppercase text-white mb-0">{{ $bill->month->bulan }}  {{ $bill->year->tahun }}</h5>
                       <span class="h2 font-weight-bold text-white mb-0">{{ number_format($bill->user->tagihan, 0, ',', '.') }}</span>
                     </div>
-                  
+
                     <div class="col-auto mt-2">
                           <!-- Button trigger modal -->
-                      <p  class="btn btn-white text-dark">Pending</p>     
+                      <p  class="btn btn-white text-dark">Pending</p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>     
+            </div>
             @endforeach
-           
+
             @foreach ($succes as $succes)
             <div class="col-xl-3 col-md-6">
                 <div class="card card-stats">
@@ -43,20 +43,20 @@
                         <h5 class="card-title text-uppercase text-white mb-0">{{ $succes->month->bulan }}  {{ $succes->year->tahun }}</h5>
                         <span class="h2 font-weight-bold text-white mb-0">{{ number_format($succes->user->tagihan, 0, ',', '.') }}</span>
                       </div>
-                    
+
                       <div class="col-auto mt-2">
                              <!-- Button trigger modal -->
-                        <p  class="btn btn-white text-dark">Succes</p>     
+                        <p  class="btn btn-white text-dark">{{ $succes->status }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-            </div>          
+            </div>
             @endforeach
         </div>
       </div>
     </div>
-  </div> 
-  
- 
+  </div>
+
+
 @endsection
