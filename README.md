@@ -2,7 +2,7 @@
 
 ## Sistem Penagihan Pelanggan Tv Kabel Berbasis Website
 
-Helloo... Project ini merupakan sistem penagihan pelanggan tv kabel berbasis website . Yang dimana  pembayaran melalui payment gateway. Yaaa sistemnya seperti penagihan indihome. Project ini untuk mengasah ke ahlian saya dalam framework laravel dan ya mungkin buat program profesional atau tugas akhir nanti.Fitur-fitur yang saya rencanakan adalah
+Helloo... Project ini merupakan sistem penagihan pelanggan tv kabel berbasis website . Yang dimana  pembayaran melalui payment gateway. Yaaa sistemnya seperti penagihan indihome. Project ini untuk mengasah ke ahlian saya dalam framework laravel dan ya mungkin buat program profesional atau tugas akhir nanti. Fitur-fiturnya adalah
 
  Admin:
  
