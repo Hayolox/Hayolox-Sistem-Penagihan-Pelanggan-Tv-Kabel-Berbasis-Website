@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->middleware(['auth','users'])->group(function(){
         Route::get('/', [BillsController::class, 'index'])->name('bill-user');
         Route::get('/Riwayat-pembayaran', [BillsController::class, 'riwayat'])->name('riwayat');
+        Route::post('Proses-Callback', [VaController::class, 'callback'])->name('proses-callback');
         Route::get('/Tagihan-manual/{id}', [BillsController::class, 'manual'])->name('tagihan-manual');
         Route::get('/Profil/edit/{id}', [BillsController::class, 'createprofil'])->name('profil-user');
         Route::patch('/Profil/update/{id}', [BillsController::class, 'updateprofil'])->name('update-profil');
