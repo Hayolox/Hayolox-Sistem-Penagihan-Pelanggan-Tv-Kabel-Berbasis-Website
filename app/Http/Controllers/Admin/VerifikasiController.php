@@ -39,7 +39,7 @@ class VerifikasiController extends Controller
              'user_id' => $confirm->user_id,
              'month_id' => $confirm->month_id,
              'year_id' => $confirm->year_id,
-             'status' => 'Succes',
+             'status' => 'SUCCESS',
         ]);
 
         Verification::where('id', $confirm->id)->delete();

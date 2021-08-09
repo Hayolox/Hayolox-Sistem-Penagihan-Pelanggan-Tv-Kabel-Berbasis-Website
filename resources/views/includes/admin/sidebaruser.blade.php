@@ -1,3 +1,6 @@
+@if (Auth::user()->created_at == Auth::user()->updated_at)
+
+@else
 @auth
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
   <div class="scrollbar-inner">
@@ -18,18 +21,20 @@
               <span class="nav-link-text">Tagihan</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link {{ (request()->is('Riwayat-pembayaran')) ? 'active' : '' }}" href="{{ route('riwayat') }}">
               <i class="ni ni-bullet-list-67 text-default"></i>
               <span class="nav-link-text">Riwayat Pembayaran</span>
             </a>
           </li>
-          
+
         </ul>
-        
+
       </div>
     </div>
   </div>
 </nav>
 @endauth
+
+@endif

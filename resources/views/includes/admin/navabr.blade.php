@@ -1,9 +1,13 @@
+
 @auth
+@if (Auth::user()->created_at == Auth::user()->updated_at && Auth::user()->roles == "USERS")
+
+@else
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Search form -->
-      
+
       <!-- Navbar links -->
       <ul class="navbar-nav align-items-center  ml-md-auto ">
         <li class="nav-item d-xl-none">
@@ -36,11 +40,11 @@
               <span>My profile</span>
             </a>
            @else
-             
+
            @endif
             <div class="dropdown-divider"></div>
             <form  orm action="{{ route('logout') }}" method="POST">
-                @csrf     
+                @csrf
                   <button class="ni ni-user-run dropdown-item">Logout</button>
             </form>
           </div>
@@ -49,4 +53,5 @@
     </div>
   </div>
 </nav>
+@endif
 @endauth

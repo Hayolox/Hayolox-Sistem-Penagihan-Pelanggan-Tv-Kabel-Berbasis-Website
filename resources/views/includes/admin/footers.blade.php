@@ -1,4 +1,9 @@
+
 @auth
+@if (Auth::user()->created_at == Auth::user()->updated_at && Auth::user()->roles == "USERS")
+
+@else
+
 <footer class="footer pt-0">
   <div class="row align-items-center justify-content-lg-between">
     <div class="col-lg-6">
@@ -24,4 +29,5 @@
     </div>
   </div>
 </footer>
+@endif
 @endauth

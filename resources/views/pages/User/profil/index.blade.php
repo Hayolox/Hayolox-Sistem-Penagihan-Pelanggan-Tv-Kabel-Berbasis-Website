@@ -28,7 +28,7 @@
         <!-- Card header -->
         <div class="card-header border-0">
           <div class="row">
-            
+
            <div class="col">
             <div class="card d-flex justify-content-center">
               <div class="card-body">
@@ -42,21 +42,20 @@
                     </div>
                 @endif
                 <form action="{{ route('update-profil',$user->id) }}" method="POST">
-                  
-                  @csrf
-                
+                    @method("patch")
+                    @csrf
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Username</label>
-                          <input value="{{ $user->name }}" name="name" type="text" id="input-username" class="form-control" placeholder="Username">
+                          <input value="{{ $user->name }}"  {{ (Auth::user()->created_at == Auth::user()->updated_at) ? 'disabled' : '' }} name="name" type="text" id="input-username" class="form-control" placeholder="Username">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Email address</label>
-                          <input value="{{ $user->email }}" name="email" type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                          <input value="{{ $user->email }}"  {{ (Auth::user()->created_at == Auth::user()->updated_at) ? 'disabled' : '' }} name="email" type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
                         </div>
                       </div>
 
@@ -71,13 +70,13 @@
                   </div>
 
                   <!-- Address -->
-                 
+
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Address</label>
-                          <input value="{{ $user->alamat }}" name="alamat" id="input-address" class="form-control" placeholder="Jl beringin no 52"  type="text">
+                          <input value="{{ $user->alamat }}"  {{ (Auth::user()->created_at == Auth::user()->updated_at) ? 'disabled' : '' }} name="alamat" id="input-address" class="form-control" placeholder="Jl beringin no 52"  type="text">
                         </div>
                       </div>
                     </div>
@@ -85,13 +84,13 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="hp">No Handphone</label>
-                          <input value="{{ $user->no_hp }}" name="no_hp" type="text" id="hp" class="form-control" placeholder="0812****">
+                          <input value="{{ $user->no_hp }}"  {{ (Auth::user()->created_at == Auth::user()->updated_at) ? 'disabled' : '' }} name="no_hp" type="text" id="hp" class="form-control" placeholder="0812****">
                         </div>
                       </div>
-                     
+
                     </div>
                   </div>
-               
+
                   <div class=" ml-4 justify-content-end">
                     <button type="submit" class="btn btn-primary ">Update</button>
                   </div>
@@ -99,14 +98,14 @@
               </div>
             </div>
            </div>
-        
+
       </div>
     </div>
   </div>
-  
-  
- 
+
+
+
 </div>
 </div>
- 
+
 @endsection

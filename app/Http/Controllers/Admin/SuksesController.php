@@ -10,7 +10,7 @@ class SuksesController extends Controller
 {
     public function index()
     {
-        $succes = succes::latest()->paginate();
+        $succes = succes::where('status', 'SUCCESS')->latest()->paginate();
         return view('pages.Admin.sukses.index', compact('succes'));
     }
 }

@@ -37,7 +37,6 @@ Route::prefix('/')->middleware(['auth','users'])->group(function(){
 
 Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard-admin');
-
         Route::get('/Tagihan/delete/tahun', [TahunController::class, 'index'])->name('delete-tahun');
         Route::get('/Tagihan/create/tahun', [TahunController::class, 'create'])->name('create-tahun');
         Route::post('/Tagihan/store/tahun/', [TahunController::class, 'store'])->name('store-tahun');
@@ -46,16 +45,13 @@ Route::prefix('Admin')->middleware(['auth', 'admin'])->group(function(){
         Route::get('/Tagihan/Bulan/{id}', [BillController::class, 'month'])->name('tagihan-bulan');
         Route::get('/Tagihan/showinteries/{id}', [BillController::class, 'showinteries'])->name('showinteries');
         Route::resource('Tagihan', BillController::class);
-
+        Route::resource('Users', UserController::class);
         Route::get('/Verifikasi-Tagihan', [VerifikasiController::class, 'index'])->name('verifikasi');
         Route::get('/cancel-Tagihan/{id}', [VerifikasiController::class, 'cancel'])->name('cancel-tagihan');
         Route::get('/confirm-Tagihan/{id}', [VerifikasiController::class, 'succes'])->name('confirm-tagihan');
 
         Route::get('/Sukses', [SuksesController::class, 'index'])->name('sukses');
-        Route::resource('Users', UserController::class);
-
 });
-
 Auth::routes(['register' => false]);
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Tambah User')
 @section('content')
-    
+
 <div class="header bg-primary pb-6">
   <div class="container-fluid">
     <div class="header-body">
@@ -28,7 +28,7 @@
         <!-- Card header -->
         <div class="card-header border-0">
           <div class="row">
-            
+
            <div class="col">
             <div class="card d-flex justify-content-center">
               <div class="card-body">
@@ -42,15 +42,16 @@
                     </div>
                 @endif
                 <form action="{{ route("Users.update",$user->id) }}" method="POST">
-                  @method("PUT")
-                  @csrf
-                 
+                    @method("PUT")
+                    @csrf
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Username</label>
-                          <input value="{{ $user->name }}" name="name" type="text" id="input-username" class="form-control" placeholder="Username">
+                          <input value="{{ $user->name }}" name="name" type="text" id="input-username"
+                           {{ (Auth::user()->created_at == Auth::user()->updated_at && Auth::user()->roles == "USERS") ? 'readonly' : '' }}
+                           class="form-control" placeholder="Username">
                         </div>
                       </div>
                       <div class="col-lg-4">
@@ -71,7 +72,7 @@
                   </div>
 
                   <!-- Address -->
-                 
+
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
@@ -106,7 +107,7 @@
                       </div>
                     </div>
                   </div>
-               
+
                   <div class=" ml-4 justify-content-end">
                     <button type="submit" class="btn btn-primary ">Update</button>
                   </div>
@@ -114,14 +115,14 @@
               </div>
             </div>
            </div>
-        
+
       </div>
     </div>
   </div>
-  
-  
- 
+
+
+
 </div>
 </div>
-    
+
 @endsection

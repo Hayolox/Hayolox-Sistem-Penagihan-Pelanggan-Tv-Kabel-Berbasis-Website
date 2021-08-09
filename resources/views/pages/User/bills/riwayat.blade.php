@@ -1,3 +1,6 @@
+@if (Auth::user()->created_at == Auth::user()->updated_at && Auth::user()->roles == "USERS")
+
+@else
 @extends('layouts.user')
 @section('title', 'Tagihan')
 @section('content')
@@ -60,3 +63,5 @@
 
 
 @endsection
+
+@endif

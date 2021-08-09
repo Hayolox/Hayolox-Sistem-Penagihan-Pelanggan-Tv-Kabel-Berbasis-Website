@@ -1,3 +1,8 @@
+@if (Auth::user()->created_at == Auth::user()->updated_at && Auth::user()->roles == "USERS")
+<a href="{{ route('profil-user', Auth::user()->id) }}" class="btn btn-danger d-flex justify-content-center h-10">
+    Di karenakan anda pertama kali login. Klik text ini untuk ganti password
+</a>
+@else
 @extends('layouts.User')
 @section('title', 'Bayar Tagihan')
 @section('content')
@@ -127,19 +132,13 @@
                   </div>
 
                 </div>
-
-
               </div>
             </div>
            </div>
-
       </div>
     </div>
   </div>
-
-
-
 </div>
 </div>
-
 @endsection
+@endif
